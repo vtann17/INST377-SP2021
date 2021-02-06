@@ -80,7 +80,7 @@ h1 {
   padding-top: 20.15px;
 }
 
-nav {
+.nav {
   height: 50px;
   flex: 100%;
   display: flex;
