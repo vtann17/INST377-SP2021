@@ -1,7 +1,7 @@
 body {
-    background: #3AAFAB;
-    color: #fff;
-    padding: 50px 0;
+    background: teal;
+    color: white;
+    padding: 60px 0;
 }
 
 h1 {
@@ -16,12 +16,12 @@ h1 {
 
 .flex-outer > li > label, .flex-outer li p {
     flex: 1 0 120px;
-    max-width: 220px;
+    max-width: 250px;
     color: black;
 }
 
 .flex-outer > li > label + *, .flex-inner {
-    flex: 1 0 220px;
+    flex: 1 0 200px;
     max-width: 650px;
 }
 
@@ -47,5 +47,5 @@ h1 {
 }
 
 .flex-outer > li:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
