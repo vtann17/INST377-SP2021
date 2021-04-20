@@ -8,9 +8,9 @@ body {
   position: relative;
   width: 398px;
   padding: 10px 40px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 15px;
-  background: #eee;
+  background: lightgray;
 }
 
 .carousel img {

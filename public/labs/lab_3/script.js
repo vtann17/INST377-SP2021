@@ -1,21 +1,21 @@
 /* Put your javascript in here */
 function arrayMethod() {
-  const array1 = ['onigiri_1.png', 'onigiri_2.png', 'onigiri_3.png', 'onigiri_4.png', 'roll_1.png', 'roll_2.png', 'roll_3.png'];
+  const array1 = ['images/onigiri_1.png', 'images/onigiri_2.png', 'images/onigiri_3.png', 'images/onigiri_4.png', 'images/roll_1.png', 'images/roll_2.png', 'images/roll_3.png'];
   const listContainer = document.createElement('ul');
-  /* listContainer.className = 'images' */
+  listContainer.className = 'images'
   const target = document.querySelector('.gallery');
-  target.append(listContainer);
+  target.appendChild(listContainer);
 
   array1.forEach((png) => {
     const listItem = document.createElement('li');
-    /* listContainer.append(listItem); */
-    /* const listImg = document.createElement('img'); */
-    listItem.innerText = png;
-    listContainer.append(listItem);
+    listContainer.appendChild(listItem);
+    const listImg = document.createElement('img');
+    listImg.setAttribute("src", png);
+    listItem.append(listImg);
+
+    console.log('done')
   });
 }
-
-window.onload = arrayMethod;
 
 const width = 130;
 const count = 3;
@@ -36,3 +36,5 @@ carousel.querySelector('.next').onclick = function() {
   position = Math.max(position, -width * (listElems.length - count));
   list.style.marginLeft = position + 'px';
 };
+
+window.onload = arrayMethod;
