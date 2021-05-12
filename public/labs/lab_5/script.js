@@ -9,57 +9,43 @@ function mapInit() {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoidnRhbm4xNyIsImEiOiJja25wZWRiNDAwMG94MnVwajNjbGszNXJqIn0.iqOZohRqzM8ykNLCOphUdQ'
   }).addTo(mymap);
-  return map;
+  return mymap;
 }
 
 async function dataHandler(mapObjectFromFunction) {
   // use your assignment 1 data handling code here
   // and target mapObjectFromFunction to attach markers
-  const form = document.querySelector('search form');
+  const form = document.querySelector('.search form');
   const search = document.querySelector('#zip');
-  const 
+  const targetList = document.querySelector('.target list')
 
   const request = await fetch('/api');
   const restaurants = await request.json();
-  console.log(restaurants)
+  console.table(restaurants)
 
-  search.addEventListener('input', (event) => {
-    event.preventDefault()
-    //continue here
-  })
-  // figure out how to mesh this with above
-  function findMatches(wordToMatch, restaurants) {
-    return restaurants.filter((place) => {
-      const regex = new RegExp(wordToMatch, "gi");
-      return place.name.match(regex) || place.category.match(regex);
-    });
-  }
-  function displayMatches(event) {
-    const matchArray = findMatches(event.target.value, restaurants);
-    const html = matchArray
-      .map((place) => {
-        return `
-            <li class = "suggestion">
-                <span class = "name">${place.name}</span>
-                <span class = "category">${place.category}</span>
-                <span class = "address">${place.address_line_1}</span>
-                <span class = "city">${place.city}</span>
-                <span class = "zip">${place.zip}</span>
-            </li>
-        `;
-      })
-      .join("");
-    suggestions.innerHTML = html;
-  }
-  const searchInput = document.querySelector(".search");
-  const suggestions = document.querySelector(".suggestions");
+  form.addEventListener('submit', async (event) => {
+    targetList.innerText = '';
+    event.preventDefault();
+    console.log('form submitted', search.value);
+    const display = data.filter((record) => record.zip === search.value);
+    const topFive = display.slice(0,5)
   
-  searchInput.addEventListener('keyup', (evt) => {displayMatches(evt)
+    console.table(topFive);
+
+    topFive.forEach((row) => {
+            
+      const appendItem = document.createElement("li");
+      appendItem.innerHTML = row.name + ' - ' + row.city + ', ' + row.state + ' ' + row.zip;
+      targetList.append(appendItem);
+  
   });
-  }
+  });
+
+    }
 
 
 async function windowActions() {
+  console.log('window loaded')
   const map = mapInit();
   await dataHandler(map);
 }
