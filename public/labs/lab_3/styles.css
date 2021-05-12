@@ -5,12 +5,12 @@ body {
 }
 
 .carousel {
-  position: relative;
+  position: fixed;
   width: 398px;
   padding: 10px 40px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   border-radius: 15px;
-  background: lightgray;
+  background: grey;
 }
 
 .carousel img {
